@@ -7,11 +7,12 @@ import ThemeToggler from "./ThemeToggler";
 import { AuthContext, ScrollContext } from "../providers/Context";
 import Button from "../customs/Button";
 import { IoMdLogOut } from "react-icons/io";
+import { navLinks } from "../utilities/navlinks";
 
 function Navbar() {
   const { isScrolled } = useContext(ScrollContext);
 
-  const { user, userLogOut, userData } = useContext(AuthContext);
+  const { user, userData, userLogOut } = useContext(AuthContext);
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -21,32 +22,6 @@ function Navbar() {
   };
 
   const navigate = useNavigate();
-
-  const navLinks = [
-    {
-      name: "Home",
-      path: "/",
-    },
-    {
-      name: "Browse Tasks",
-      path: "/browse-tasks",
-    },
-    {
-      name: "About Us",
-      path: "/about-us",
-    }
-  ];
-
-  const privateLinks = [
-    {
-      name: "Add Task",
-      path: "/add-task",
-    },
-    {
-      name: "My Tasks",
-      path: "/my-tasks",
-    },
-  ];
 
   return (
     <nav
@@ -79,10 +54,7 @@ function Navbar() {
             }`}
             to="/"
           >
-          WORK NEST
-            
-  
-
+            WORK NEST
           </Link>
           {user ? (
             <div
@@ -135,24 +107,20 @@ function Navbar() {
               </NavLink>
             );
           })}
-          {user &&
-            privateLinks.map((item) => {
-              return (
-                <NavLink
-                  key={item.name}
-                  className={({ isActive }) =>
-                    `border-[1px] rounded-full py-1 px-4 text-base-100 transition-all duration-300 ease-in-out ${
-                      isActive
-                        ? "border-base-100 bg-black/10"
-                        : "border-transparent hover:bg-black/10"
-                    } `
-                  }
-                  to={item.path}
-                >
-                  {item.name}
-                </NavLink>
-              );
-            })}
+          {user && (
+            <NavLink
+              className={({ isActive }) =>
+                `border-[1px] rounded-full py-1 px-4 text-base-100 transition-all duration-300 ease-in-out ${
+                  isActive
+                    ? "border-base-100 bg-black/10"
+                    : "border-transparent hover:bg-black/10"
+                } `
+              }
+              to="/dashboard"
+            >
+              My Deshboard
+            </NavLink>
+          )}
         </div>
 
         <div className="hidden lg:flex items-center justify-end gap-2 duration-300 transition ease-in-out">
@@ -244,18 +212,9 @@ function Navbar() {
                   </NavLink>
                 );
               })}
-              {user &&
-                privateLinks.map((item) => {
-                  return (
-                    <NavLink
-                      key={item.name}
-                      to={item.path}
-                      className="block py-2"
-                    >
-                      {item.name}
-                    </NavLink>
-                  );
-                })}
+              <NavLink to={"/dashboard"} className="block py-2">
+                My Deshboard
+              </NavLink>
             </div>
             <div className="flex flex-row gap-2 justify-center mt-8 py-4 px-6">
               {user ? (

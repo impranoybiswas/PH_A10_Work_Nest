@@ -30,7 +30,7 @@ function TaskCard({ item }) {
         className="flex gap-3 w-full border-b-2 border-primary py-3 px-1 cursor-pointer"
       >
         <img
-          className="bg-white w-10 h-10 rounded-full shadow-md"
+          className="bg-white w-10 h-10 object-cover rounded-full shadow-md"
           src={profile.photoUrl}
           onError={(e) => {
             e.target.onerror = "";

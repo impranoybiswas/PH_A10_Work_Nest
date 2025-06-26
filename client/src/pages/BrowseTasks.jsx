@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router";
 import MainSection from "../layouts/MainSection";
 import SectionHeader from "../customs/SectionHeader";
 import BrowseCard from "../components/BrowseCard";
 import Loading from "../components/Loading";
+import useTasks from "../hooks/LoadTasks";
 
 
 function BrowseTasks() {
-  const loadedTasks = useLoaderData();
+  const {loadedTasks} = useTasks();
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 

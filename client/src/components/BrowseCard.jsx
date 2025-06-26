@@ -37,7 +37,7 @@ function BrowseCard({ task }) {
         <div className="flex flex-col gap-3 px-3 md:px-5 lg:px-8 w-full">
           <div className="flex items-center gap-3 w-full border-b-2 border-primary py-3 px-1 cursor-pointer">
             <img
-              className="bg-white w-12 h-12 rounded-full shadow-md"
+              className="bg-white w-12 h-12 object-cover rounded-full shadow-md"
               src={profile.photoUrl}
               onError={(e) => {
                 e.target.onerror = "";

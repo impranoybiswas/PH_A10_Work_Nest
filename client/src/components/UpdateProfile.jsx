@@ -11,7 +11,7 @@ function UpdateProfile({ userData }) {
     const formData = Object.fromEntries(form);
     console.log(formData);
 
-    fetch(`https://work-nest-server-azure.vercel.app/update-user/${email}`, {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/update-user/${email}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

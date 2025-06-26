@@ -21,7 +21,7 @@ function UpdateTasks() {
       return toast.error("Bid price must be between 5 and 100");
     }
 
-    fetch(`https://work-nest-server-azure.vercel.app/update-task/${id}`, {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/update-task/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -46,10 +46,10 @@ function UpdateTasks() {
   };
 
   return (
-    <MainSection>
-      <SectionHeader title="Update Tasks" subtitle="Edit your tasks here" />
+    <>
+      <SectionHeader title="Update Tasks" />
       <form
-        className="w-full max-w-3xl mx-auto p-6 bg-base-100 rounded-xl border-[1px] border-gray-300 shadow-md grid gap-5"
+        className="w-full max-w-3xl mx-auto p-6 bg-base-100 grid gap-5"
         onSubmit={handleUpdateTask}
       >
         <div>
@@ -153,7 +153,7 @@ function UpdateTasks() {
           <Button label="Update Your Task" />
         </div>
       </form>
-    </MainSection>
+    </>
   );
 }
 

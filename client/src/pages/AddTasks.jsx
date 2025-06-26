@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import MainSection from "../layouts/MainSection";
 import SectionHeader from "../customs/SectionHeader";
 import { AuthContext } from "../providers/Context";
 import Button from "../customs/Button";
@@ -27,7 +26,9 @@ function AddTasks() {
 
     const currentDate = new Date();
     const day = currentDate.getDate();
-    const month = currentDate.toLocaleString("en-US", { month: "short" }).toUpperCase();
+    const month = currentDate
+      .toLocaleString("en-US", { month: "short" })
+      .toUpperCase();
     const year = currentDate.getFullYear();
 
     const taskData = {
@@ -39,7 +40,7 @@ function AddTasks() {
     };
 
     try {
-      const res = await fetch("https://work-nest-server-azure.vercel.app/add-task", {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/add-task`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(taskData),
@@ -65,29 +66,44 @@ function AddTasks() {
   };
 
   return (
-    <MainSection>
+    <>
       <SectionHeader title="Add Tasks" subtitle="Add your tasks here" />
 
       <form
-        className="w-full max-w-3xl mx-auto p-6 bg-base-100 rounded-xl border-[1px] border-gray-300 shadow-md grid gap-5"
+        className="w-full max-w-3xl mx-auto p-6 bg-base-100 grid gap-5"
         onSubmit={handleAddTask}
       >
-
         <div>
-          <label className="label" htmlFor="taskName">Task Name</label>
-          <input className="input input-bordered w-full" type="text" name="taskName" id="taskName" required />
+          <label className="label" htmlFor="taskName">
+            Task Name
+          </label>
+          <input
+            className="input input-bordered w-full"
+            type="text"
+            name="taskName"
+            id="taskName"
+            required
+          />
         </div>
 
-
         <div>
-          <label className="label" htmlFor="taskPhoto">Add Image URL</label>
-          <input className="input input-bordered w-full" type="text" name="taskPhoto" id="taskPhoto" required />
+          <label className="label" htmlFor="taskPhoto">
+            Add Image URL
+          </label>
+          <input
+            className="input input-bordered w-full"
+            type="text"
+            name="taskPhoto"
+            id="taskPhoto"
+            required
+          />
         </div>
-
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
           <div>
-            <label className="label" htmlFor="taskDescription">Task Description</label>
+            <label className="label" htmlFor="taskDescription">
+              Task Description
+            </label>
             <textarea
               className="textarea textarea-bordered w-full md:h-full"
               name="taskDescription"
@@ -99,7 +115,9 @@ function AddTasks() {
 
           <div className="flex flex-col gap-5">
             <div>
-              <label className="label" htmlFor="catagory">Category</label>
+              <label className="label" htmlFor="catagory">
+                Category
+              </label>
               <select
                 defaultValue=""
                 className="select select-bordered w-full"
@@ -107,7 +125,9 @@ function AddTasks() {
                 id="catagory"
                 required
               >
-                <option disabled value="">Select Category</option>
+                <option disabled value="">
+                  Select Category
+                </option>
                 <option>Web Development</option>
                 <option>Graphic Design</option>
                 <option>Data Entry</option>
@@ -119,7 +139,9 @@ function AddTasks() {
             </div>
 
             <div>
-              <label className="label" htmlFor="bidPrice">Bid Price</label>
+              <label className="label" htmlFor="bidPrice">
+                Bid Price
+              </label>
               <div className="flex w-full">
                 <div className="w-1/3">
                   <input
@@ -139,14 +161,24 @@ function AddTasks() {
             </div>
 
             <div>
-              <label className="label" htmlFor="deadline">Deadline</label>
-              <input type="date" className="input input-bordered w-full" name="deadline" id="deadline" required />
+              <label className="label" htmlFor="deadline">
+                Deadline
+              </label>
+              <input
+                type="date"
+                className="input input-bordered w-full"
+                name="deadline"
+                id="deadline"
+                required
+              />
             </div>
           </div>
         </div>
 
         <div>
-          <label className="label" htmlFor="taskerName">Your Name for Task</label>
+          <label className="label" htmlFor="taskerName">
+            Your Name for Task
+          </label>
           <input
             className="input input-bordered w-full"
             type="text"
@@ -158,7 +190,9 @@ function AddTasks() {
         </div>
 
         <div>
-          <label className="label" htmlFor="taskerEmail">Your Email for Task</label>
+          <label className="label" htmlFor="taskerEmail">
+            Your Email for Task
+          </label>
           <input
             className="input input-bordered w-full"
             type="email"
@@ -173,7 +207,7 @@ function AddTasks() {
           <Button label="Add Task Now" />
         </div>
       </form>
-    </MainSection>
+    </>
   );
 }
 

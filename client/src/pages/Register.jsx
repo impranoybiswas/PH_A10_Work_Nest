@@ -51,7 +51,7 @@ function Register() {
 
     try {
       await createUser(email, password);
-      fetch("https://work-nest-server-azure.vercel.app/add-user", {
+      fetch(`${import.meta.env.VITE_SERVER_URL}/add-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

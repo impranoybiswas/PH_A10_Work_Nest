@@ -10,7 +10,7 @@ function MyCard({ task, handleDelete }) {
   const [biders, setBiders] = useState([]);
 
   useEffect(() => {
-    fetch(`https://work-nest-server-azure.vercel.app/users`)
+    fetch(`${import.meta.env.VITE_SERVER_URL}/users`)
       .then((res) => res.json())
       .then((data) => {
         const filtered = data.filter((user) => bids.includes(user.email));
@@ -78,10 +78,11 @@ function MyCard({ task, handleDelete }) {
                     key={item._id}
                     className="flex items-center gap-3 p-2 border-gray-200 border-[2px] rounded-md cursor-pointer"
                     onClick={() => navigate(`/user/${item.email}`)}
-                    data-tooltip-id="my-tooltip" data-tooltip-content="Go to Profile"
+                    data-tooltip-id="my-tooltip"
+                    data-tooltip-content="Go to Profile"
                   >
                     <img
-                      className="w-12 h-12 rounded-full shadow-md"
+                      className="w-12 h-12 object-cover rounded-full shadow-md"
                       src={
                         item.photoUrl ||
                         "https://cdn0.iconfinder.com/data/icons/app-user-interface-5/48/user-512.png"
@@ -113,7 +114,7 @@ function MyCard({ task, handleDelete }) {
           data-tooltip-id="my-tooltip"
           data-tooltip-content="Edit The Task"
           className="w-10 h-10 text-xl cursor-pointer flex justify-center items-center bg-teal-200 text-teal-600 rounded-md hover:bg-teal-500 hover:text-white transition-all duration-400"
-          onClick={() => navigate(`/update-task/${_id}`)}
+          onClick={() => navigate(`/dashboard/update-task/${_id}`)}
         >
           <FaEdit />
         </div>

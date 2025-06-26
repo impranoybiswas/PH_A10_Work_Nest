@@ -8,6 +8,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { FaUserEdit } from "react-icons/fa";
 import UpdateProfile from "../components/UpdateProfile";
 import ShinyText from "../customs/ShinyText";
+import { NavLink } from "react-router";
 
 function Profile() {
   const { userData, loading } = useContext(AuthContext);
@@ -16,7 +17,7 @@ function Profile() {
   useEffect(() => {
     if (loading || !userData?.email) return;
 
-    fetch(`https://work-nest-server-azure.vercel.app/my-task/${userData.email}`)
+    fetch(`${import.meta.env.VITE_SERVER_URL}/my-task/${userData.email}`)
       .then((res) => res.json())
       .then((data) => {
         setTasks(data || []);
@@ -81,16 +82,20 @@ function Profile() {
             <span className="font-semibold opacity-75">{totalBids}</span>
           </h1>
         </Fade>
+        <NavLink to="/dashboard" className="py-2 px-4 border-2 rounded-full border-base-300 hover:border-primary hover:text-primary mt-3">
+              Go to dashboard
+            </NavLink>
         <button
-        className="btn absolute right-2 top-2 btn-lg btn-circle bg-transparent border-primary border-2 rounded-full text-primary hover:bg-primary hover:text-white transition-all duration-500 ease-in-out"
-        onClick={() => document.getElementById("edit-profile").showModal()}
-        data-tooltip-id="my-tooltip" data-tooltip-content="Edit Your Profile"
-      >
-        <FaUserEdit size={27} />
-      </button>
+          className="btn absolute right-2 top-2 btn-lg btn-circle bg-transparent border-primary border-2 rounded-full text-primary hover:bg-primary hover:text-white transition-all duration-500 ease-in-out"
+          onClick={() => document.getElementById("edit-profile").showModal()}
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Edit Your Profile"
+        >
+          <FaUserEdit size={27} />
+        </button>
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-    
+
       <dialog id="edit-profile" className="modal">
         <div className="modal-box relative">
           <div>

@@ -16,6 +16,8 @@ import UserProfile from "../pages/UserProfile";
 import Terms from "../pages/Tarms";
 import ForgetPass from "../pages/ForgetPass";
 import About from "../pages/About";
+import Dashboard from "../pages/dashboard/Dashboard";
+import DashboardCard from "../pages/dashboard/DashboardCard";
 
 export const router = createBrowserRouter([
   {
@@ -27,15 +29,12 @@ export const router = createBrowserRouter([
         path: "/",
         Component: Home,
         loader: async () =>
-          await fetch("https://work-nest-server-azure.vercel.app/tasks"),
+          await fetch(`${import.meta.env.VITE_SERVER_URL}/tasks`),
         hydrateFallbackElement: <Loading />,
       },
       {
         path: "/browse-tasks",
         Component: BrowseTasks,
-        loader: async () =>
-          await fetch("https://work-nest-server-azure.vercel.app/tasks"),
-        hydrateFallbackElement: <Loading />,
       },
       {
         path: "/login",
@@ -72,7 +71,7 @@ export const router = createBrowserRouter([
       {
         path: "/details/:id",
         loader: ({ params }) =>
-          fetch(`https://work-nest-server-azure.vercel.app/task/${params.id}`),
+          fetch(`${import.meta.env.VITE_SERVER_URL}/task/${params.id}`),
         hydrateFallbackElement: <Loading />,
         element: (
           <PrivateRoute>
@@ -83,7 +82,7 @@ export const router = createBrowserRouter([
       {
         path: "/update-task/:id",
         loader: ({ params }) =>
-          fetch(`https://work-nest-server-azure.vercel.app/task/${params.id}`),
+          fetch(`${import.meta.env.VITE_SERVER_URL}/task/${params.id}`),
         hydrateFallbackElement: <Loading />,
         element: (
           <PrivateRoute>
@@ -92,11 +91,54 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            path: "/dashboard",
+            element: (
+              <PrivateRoute>
+                <DashboardCard />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "/dashboard/add-task",
+            element: (
+              <PrivateRoute>
+                <AddTasks />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "/dashboard/my-tasks",
+            element: (
+              <PrivateRoute>
+                <MyTasks />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "/dashboard/update-task/:id",
+            loader: ({ params }) =>
+              fetch(`${import.meta.env.VITE_SERVER_URL}/task/${params.id}`),
+            hydrateFallbackElement: <Loading />,
+            element: (
+              <PrivateRoute>
+                <UpdateTasks />
+              </PrivateRoute>
+            ),
+          },
+        ],
+      },
+      {
         path: "/user/:email",
         loader: ({ params }) =>
-          fetch(
-            `https://work-nest-server-azure.vercel.app/user/${params.email}`
-          ),
+          fetch(`${import.meta.env.VITE_SERVER_URL}/user/${params.email}`),
         hydrateFallbackElement: <Loading />,
         element: (
           <PrivateRoute>
@@ -115,7 +157,7 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         Component: About,
-      }
+      },
     ],
   },
 ]);

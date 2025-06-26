@@ -4,7 +4,7 @@ function BiderCard({ bid }) {
   const [bidUser, setBidUser] = useState(null);
 
   useEffect(() => {
-    fetch(`https://work-nest-server-azure.vercel.app/user/${bid}`)
+    fetch(`${import.meta.env.VITE_SERVER_URL}/user/${bid}`)
       .then((res) => res.json())
       .then((data) => {
         setBidUser(data);

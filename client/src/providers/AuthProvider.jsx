@@ -19,7 +19,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
-      fetch(`https://work-nest-server-azure.vercel.app/user/${user.email}`)
+      fetch(`${import.meta.env.VITE_SERVER_URL}/user/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setUserData(data);

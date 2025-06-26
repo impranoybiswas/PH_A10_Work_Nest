@@ -5,6 +5,8 @@ import MainSection from "../layouts/MainSection";
 import { useLoaderData } from "react-router";
 import MostVisited from "../components/MostVisited";
 import SuccessStory from "../components/SuccessStory";
+import JobCatagory from "../components/JobCatagory";
+import Offers from "../components/Offers";
 
 function Home() {
   const loadedTasks = useLoaderData();
@@ -18,8 +20,10 @@ function Home() {
     <>
       <Header />
       <MainSection>
+        <JobCatagory/>
         <FeaturedTasks tasks={tasks} />
         <MostVisited/>
+        <Offers/>
         <SuccessStory/>
       </MainSection>
     </>
