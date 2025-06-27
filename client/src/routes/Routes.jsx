@@ -18,6 +18,7 @@ import ForgetPass from "../pages/ForgetPass";
 import About from "../pages/About";
 import Dashboard from "../pages/dashboard/Dashboard";
 import DashboardCard from "../pages/dashboard/DashboardCard";
+import Contact from "../pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -157,6 +158,10 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         Component: About,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
       },
     ],
   },

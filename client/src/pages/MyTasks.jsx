@@ -37,7 +37,7 @@ function MyTasks() {
   };
 
   if (loading) {
-    return <Loading />;
+    return <div className="w-full h-full flex justify-center items-center"><span className="loading loading-spinner text-primary size-16 md:size-26"></span></div>
   }
 
   return (

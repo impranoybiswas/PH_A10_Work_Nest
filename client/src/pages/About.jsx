@@ -5,7 +5,9 @@ export default function About() {
   return (
     <MainSection>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 px-4 text-center w-full rounded-md">
+      <section
+      data-aos="zoom-in"
+      className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 px-4 text-center w-full rounded-md">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             About Work Nest
@@ -18,7 +20,9 @@ export default function About() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section
+      data-aos="fade-in"
+      className="py-16 px-4 bg-gray-50">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h2 className="text-3xl font-semibold mb-4">Our Mission</h2>
@@ -39,7 +43,9 @@ export default function About() {
       </section>
 
       {/* Features / Values Section */}
-      <section className="py-16 px-4">
+      <section
+      data-aos="fade-in"
+      className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-semibold text-center mb-12">
             Why Choose Work Nest?
@@ -86,7 +92,9 @@ export default function About() {
       </section>
 
       {/* Team Section (Optional) */}
-      <section className="bg-gray-100 py-16 px-4 w-full rounded-md">
+      <section
+      data-aos="fade-in"
+      className="bg-gray-100 py-16 px-4 w-full rounded-md">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-8">Meet the Creators</h2>
           <p className="text-gray-600 mb-6">
@@ -99,7 +107,9 @@ export default function About() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-indigo-600 text-white py-16 text-center px-4 w-full rounded-md">
+      <section
+      data-aos="fade-in"
+      className="bg-indigo-600 text-white py-16 text-center px-4 w-full rounded-md">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">
             Ready to take your career to the next level?

@@ -40,16 +40,17 @@ function Root() {
     if (path === "/") title = "Work Nest - Freelance Task Marketplace";
     else if (path === "/my-profile") title = "My Profile | Work Nest";
     else if (path === "/about-us") title = "About Us | Work Nest";
+    else if (path === "/contact") title = "Contact Us | Work Nest";
     else if (path === "/login") title = "Log In | Work Nest";
     else if (path === "/join-us") title = "Join Here | Work Nest";
     else if (path === "/terms") title = "Terms & Conditions | Work Nest";
     else if (path === "/browse-tasks") title = "All Tasks | Work Nest";
-    else if (path === "/my-tasks") title = "My Tasks | Work Nest";
-    else if (path === "/add-task") title = "Add Task | Work Nest";
-    else if (path.startsWith("/details/"))
-      title = "Task Details | Work Nest";
-    else if (path.startsWith("/update-task/"))
-      title = "Update Task | Work Nest";
+    else if (path === "/dashboard") title = "Deshboard | Work Nest";
+    else if (path === "/dashboard/my-tasks") title = "My Tasks | Work Nest";
+    else if (path === "/dashboard/add-task") title = "Add Task | Work Nest";
+    else if (path.startsWith("/details/")) title = "Task Details | Work Nest";
+    else if (path.startsWith("/user/")) title = "Profile | Work Nest";
+    else if (path.startsWith("/update-task/")) title = "Update Task | Work Nest";
     else if (path === "/forget-password") title = "Forget Password | Work Nest";
 
     document.title = title;

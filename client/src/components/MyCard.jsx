@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { format } from "date-fns";
 
 function MyCard({ task, handleDelete }) {
-  const { _id, taskName, catagory, bidPrice, deadline, bids = [] } = task;
+  const { _id, taskName, catagory, bidPrice, deadline, bids } = task;
   const navigate = useNavigate();
   const [biders, setBiders] = useState([]);
 
@@ -36,7 +36,7 @@ function MyCard({ task, handleDelete }) {
 
       <td>
         <h1 className="font-semibold lg:text-xl line-clamp-1">{taskName}</h1>
-        <div className="hidden md:flex items-center gap-3 mt-2">
+        <div className="hidden md:flex flex-wrap items-center gap-3 mt-2">
           <p className="text-sm opacity-60 border-[2px] border-gray-200 py-1 px-3 rounded-full">
             {catagory}
           </p>

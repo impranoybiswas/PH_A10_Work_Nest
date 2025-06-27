@@ -11,6 +11,10 @@ export const navLinks = [
     name: "About Us",
     path: "/about-us",
   },
+  {
+    name: "Contact",
+    path: "/contact",
+  },
 ];
 
 export const privateLinks = [

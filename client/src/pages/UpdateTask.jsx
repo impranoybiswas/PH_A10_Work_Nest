@@ -1,5 +1,4 @@
 import React from "react";
-import MainSection from "../layouts/MainSection";
 import SectionHeader from "../customs/SectionHeader";
 import Button from "../customs/Button";
 import { useLoaderData, useParams, useNavigate } from "react-router";
